@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.NavActivity"
+    android:orientation="vertical">
+  <ImageView
+      android:id="@+id/imageView"
+      android:layout_width="80dp"
+      android:layout_height="80dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginLeft="150dp"
+      android:src="@drawable/logo" />
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_marginTop="10dp"
+      android:text="Select an option"
+      android:textAlignment="center"
+      android:textSize="32dp"
+      android:textStyle="bold"/>
+  <TextView
+      android:id="@+id/tvWelcomeMsg"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_marginTop="10dp"
+      android:text="Welcome"
+      android:textAlignment="center"
+      android:textSize="24dp"
+      android:textColor="@color/colorWelcome"
+      android:textStyle="bold"/>
+
+  <Button
+      android:id="@+id/btnDiaplayPatient"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginRight="20dp"
+      android:background="@color/colorSubmit"
+      android:text="VIEW ALL PATIENT"
+      android:textSize="24dp"
+      android:onClick="DisplayPatientClick" />
+
+  <Button
+      android:id="@+id/btnAddTest"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:layout_marginLeft="20dp"
+      android:layout_marginTop="20dp"
+      android:layout_marginRight="20dp"
+      android:background="@color/colorSubmit"
+      android:text="@string/btn1"
+      android:textSize="24dp"
+      android:onClick="AddPatientClick"/>
+
+  <Button
+    android:id="@+id/btnAddNewTest"
+    android:layout_width="match_parent"
+    android:layout_height="60dp"
+    android:layout_marginTop="20dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:background="@color/colorSubmit"
+    android:textSize="24dp"
+    android:onClick="AddNewTestClick"
+    android:text="ADD A TEST"/>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorSubmit">#7BC3BC</color>
+    <color name="colorCancel">#FFEB3B</color>
+    <color name="appbackground">#F8E6EC</color>
+    <color name="formfield">#DCFAFD</color>
+    <color name="colorRegister">#B2B9DF</color>
+    <color name="colorCardView">#8B9CF6</color>
+    <color name="colorCardView2">#FBE2E1</color>
+    <color name="colorWelcome">#2196F3</color>
+
+
+</resources>

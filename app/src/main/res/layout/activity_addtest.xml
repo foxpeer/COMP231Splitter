@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.AddTestActivity">
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginLeft="150dp"
+        android:src="@drawable/logo" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:text="Add a new Test"
+        android:textAlignment="center"
+        android:textSize="28dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/tvTestId"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/formfield"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:hint="Test Id"
+        android:visibility="invisible"/>
+    <EditText
+        android:id="@+id/tvnurseId"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Nurse Id" />
+
+    <EditText
+        android:id="@+id/tvPatientId"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Patient Id" />
+
+    <EditText
+        android:id="@+id/tvTestName"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Test Name" />
+
+    <EditText
+        android:id="@+id/tvBPH"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="BPH (mmHg)" />
+
+    <EditText
+        android:id="@+id/tvBPL"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="BPL (mmHg)" />
+
+
+
+    <EditText
+        android:id="@+id/tvWeight"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Weight (kg)" />
+    <EditText
+        android:id="@+id/tvHeight"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Height (cm)" />
+    <EditText
+        android:id="@+id/tvTemperature"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="60dp"
+        android:background="@color/formfield"
+        android:hint="Temperature (C)" />
+
+    <LinearLayout
+        android:layout_width="288dp"
+        android:layout_height="53dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="60dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnAddtest"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:background="@color/colorSubmit"
+            android:text="Add"
+            android:onClick="SubmitNewTest"
+            android:textSize="24dp" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="120dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="10dp"
+            android:background="@color/colorCancel"
+            android:onClick="CancelAddTest"
+            android:text="Cancel"
+            android:textSize="24dp" />
+    </LinearLayout>
+
+</LinearLayout>

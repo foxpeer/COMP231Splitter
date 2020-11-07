@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Activity.TestListActivity">
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="560dp"
+        android:layout_marginEnd="0dp"
+        android:orientation="vertical"
+        tools:context=".Activity.TestListActivity">
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            tools:listitem="@layout/test_cardview"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <Button
+        android:id="@+id/buttonBackToPatient"
+        android:layout_width="match_parent"
+        android:layout_height="78dp"
+        android:layout_marginTop="50dp"
+        android:background="#F3B0AB"
+            android:textStyle="bold"
+            android:textSize="24dp"
+        android:onClick="BackToPatient"
+        android:text="Back to Patient List"
+        app:layout_anchor="@+id/recycler_view"
+        app:layout_anchorGravity="bottom|center" />
+</LinearLayout>
