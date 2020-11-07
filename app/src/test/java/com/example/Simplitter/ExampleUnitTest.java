@@ -1,4 +1,4 @@
-package com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4;
+package com.example.Simplitter;
 
 import org.junit.Test;
 

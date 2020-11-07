@@ -1,4 +1,4 @@
-package com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4;
+package com.example.Simplitter;
 
 import android.content.Context;
 
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4", appContext.getPackageName());
+        assertEquals("com.example.comp306t2.Simplitter", appContext.getPackageName());
     }
 }

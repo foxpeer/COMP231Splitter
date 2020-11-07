@@ -1,4 +1,4 @@
-package com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4.Activity;
+package com.example.Simplitter.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
@@ -9,15 +9,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4.NurseViewModel;
-import com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4.R;
+import com.example.Simplitter.UserViewModel;
+import com.example.Simplitter.R;
 
 public class MainActivity extends AppCompatActivity {
 
-    private NurseViewModel nurseViewModel;
-    private SharedPreferences nursePref;
+    private UserViewModel userViewModel;
+    private SharedPreferences userPref;
     public SharedPreferences.Editor editor;
-    EditText etNurseId;
+    EditText etEmail;
     EditText etPassword;
     TextView validation;
 
@@ -26,9 +26,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        nurseViewModel= ViewModelProviders.of(this).get(NurseViewModel.class);
+        userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
 
-        etNurseId =(EditText)findViewById(R.id.editText_nurseId);
+        etEmail =(EditText)findViewById(R.id.editText_email);
         etPassword =(EditText) findViewById(R.id.editText_password);
         validation=(TextView)findViewById(R.id.textViewValidation);
     }
@@ -36,39 +36,41 @@ public class MainActivity extends AppCompatActivity {
     public void LoginClick(View view) {
         validation.setText("");
         try {
-            int nurseId = Integer.parseInt(etNurseId.getText().toString());
+            String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
-            nurseViewModel.getNurse(nurseId).observe(MainActivity.this,optionalN->{
-                optionalN.ifPresent(n->{
-                    if(n.getPassword().equals(password)){
+            userViewModel.getUserByEmail(email).observe(MainActivity.this,optionalN->{
+                optionalN.ifPresent(user->{
+                    if(user.getPassword().equals(password)){
                         //validation.setText("Welcome "+n.getFirstname()+" "+n.getLastname());
-                        nursePref = getSharedPreferences("nurse",MODE_PRIVATE);
-                        editor=nursePref.edit();
-                        editor.putInt("nurseid", nurseId);
-                        editor.putString("firstName",n.getFirstname());
-                        editor.putString("lastName",n.getLastname());
+                        userPref = getSharedPreferences("user",MODE_PRIVATE);
+                        editor=userPref.edit();
+                        editor.putString("email", user.getEmail());
+                        editor.putString("firstName",user.getFirstname());
+                        editor.putString("lastName",user.getLastname());
                         editor.commit();
-                        Intent intent = new Intent(this, NavActivity.class);
+
+                   /* add in the future for new activity
+                   //    Intent intent = new Intent(this, NavActivity.class);
                         intent.putExtra("nurseId", nurseId);
                         intent.putExtra("firstName", n.getFirstname());
                         intent.putExtra("lastName", n.getLastname());
-                        startActivity(intent);
+                        startActivity(intent);*/
                     }
                     else {
-                        validation.setText("Incorrect username or password, please reenter");
+                        validation.setText("Failed to verify your credential, please try again");
                     }
                 });
             });
         }
         catch (Exception ex){
-            validation.setText("Please enter correct username or password");
+            validation.setText("Failed to verify your credential, please try again");
         }
 
     }
     public void RegisterClick(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);
-        Toast.makeText(getApplicationContext(),"Register as a new nurse", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(),"Register as a new user", Toast.LENGTH_SHORT).show();
 
     }
 

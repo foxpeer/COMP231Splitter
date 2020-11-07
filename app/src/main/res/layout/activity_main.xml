@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:text="Healthy Care app"
+        android:text="Simplitter for Bill Split"
         android:textAlignment="center"
         android:textSize="32dp"
         android:textStyle="bold"/>
@@ -32,8 +32,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
-        android:autofillHints="@string/prompt_id"
-        android:hint="@string/prompt_id" />
+        android:autofillHints="@string/prompt_email"
+        android:hint="@string/prompt_email" />
 
     <EditText
         android:id="@+id/editText_password"

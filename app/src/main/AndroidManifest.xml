@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.liping_wu_xinglong_lu_comp304_s2020_gp10_lab4">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.Simplitter">
 
     <application
         android:allowBackup="true"
@@ -9,20 +10,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activity.MainActivity">
+        <activity
+            android:name=".Activity.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity.RegisterActivity"></activity>
-        <activity android:name=".Activity.PatientListActivity"></activity>
-        <activity android:name=".Activity.PatientActivity"></activity>
-        <activity android:name=".Activity.PatientUpdateActivity"></activity>
-        <activity android:name=".Activity.NavActivity"></activity>
-        <activity android:name=".Activity.TestListActivity"></activity>
-        <activity android:name=".Activity.AddTestActivity"></activity>
+        <!-- Register activity here when you added new activity-->
+        <activity
+            android:name=".Activity.RegisterActivity">
+        </activity>
+
+
     </application>
 
 </manifest>
