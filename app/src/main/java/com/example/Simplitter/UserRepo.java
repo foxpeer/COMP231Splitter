@@ -15,7 +15,7 @@ public class UserRepo {
 
     //constructor1;
     UserRepo(Application app){
-        UserDatabase db=UserDatabase.getDatabase(app);
+        SplitterDatabase db= SplitterDatabase.getDatabase(app);
         this.userDao=db.userDao();
     }
   //  in case search by userId

@@ -9,20 +9,24 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
+import com.example.Simplitter.Dao.ActivityDao;
+import com.example.Simplitter.Dao.DetailExpensesDao;
 import com.example.Simplitter.Dao.UserDao;
 import com.example.Simplitter.Model.User;
 
 @Database(entities = {User.class},version=3,exportSchema = false)
-public abstract class UserDatabase extends RoomDatabase {
+public abstract class SplitterDatabase extends RoomDatabase {
     public abstract UserDao userDao();
-    private static volatile UserDatabase instance;
+    public abstract ActivityDao activityDao();
+    public abstract DetailExpensesDao detailExpensesDao();
+    private static volatile SplitterDatabase instance;
 
-    static UserDatabase getDatabase(final Context context) {
+    static SplitterDatabase getDatabase(final Context context) {
         if (instance == null) {
-            synchronized (UserDatabase.class) {
+            synchronized (SplitterDatabase.class) {
                 if (instance == null) {
                     instance = Room.databaseBuilder(context.getApplicationContext(),
-                            UserDatabase.class, "UserDatabase")
+                            SplitterDatabase.class, "UserDatabase")
                             .fallbackToDestructiveMigration()   //if exist, destroy the old database
                             .addCallback(roomCallback)
                             .build();
@@ -45,9 +49,13 @@ public abstract class UserDatabase extends RoomDatabase {
     };
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private UserDao userDAO;
+        private ActivityDao activityDao;
+        private DetailExpensesDao detailExpensesDao;
 
-        private PopulateDbAsyncTask(UserDatabase db){
+        private PopulateDbAsyncTask(SplitterDatabase db){
             userDAO = db.userDao();
+            userDAO = db.userDao();
+            activityDao=db.activityDao();
 
         }
         @Override
