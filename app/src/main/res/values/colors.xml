@@ -3,9 +3,9 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
-    <color name="colorSubmit">#7BC3BC</color>
-    <color name="formfield">#DCFAFD</color>
-    <color name="colorRegister">#B2B9DF</color>
+    <color name="colorButton1">#7BC3BC</color>
+    <color name="formField">#DCFAFD</color>
+    <color name="colorButton2">#B2B9DF</color>
 
 
 </resources>
