@@ -69,7 +69,6 @@
         android:layout_marginLeft="30dp"
         android:layout_marginTop="20dp"
         android:text="Total amount"
-        android:textColor="@color/colorAccent"
         android:textSize="30sp"
         android:textStyle="bold" />
 
@@ -80,6 +79,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="50dp"
         android:background="@color/colorButton1"
+        android:textColor="@color/cardview_light_background"
         android:onClick="CalculateClick"
         android:text="@string/action_calculate"
         android:textStyle="bold" />
@@ -91,6 +91,7 @@
         android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:background="@color/colorButton2"
+        android:textColor="@color/cardview_light_background"
         android:onClick="MainClick"
         android:text="@string/action_main"
         android:textStyle="bold" />
