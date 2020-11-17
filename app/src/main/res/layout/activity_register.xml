@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.RegisterActivity"
-    android:orientation="vertical">
+    android:layout_marginTop="10dp"
+    android:orientation="vertical"
+    tools:context=".Activity.RegisterActivity">
 
 
     <ImageView
@@ -15,6 +15,7 @@
         android:layout_height="120dp"
         android:layout_marginLeft="150dp"
         android:src="@drawable/logo" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="60dp"
@@ -22,7 +23,7 @@
         android:text="Register as a new user"
         android:textAlignment="center"
         android:textSize="32dp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
     <!--
     <EditText
         android:id="@+id/editText_userId"
@@ -40,10 +41,11 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_email"
-        android:background="@color/formfield"/>
+        android:background="@color/formField"
+        android:hint="@string/prompt_email" />
+
     <EditText
         android:id="@+id/editText_firstName"
         android:layout_width="match_parent"
@@ -51,8 +53,9 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
-        android:hint="First Name"
-        android:background="@color/formfield"/>
+        android:background="@color/formField"
+        android:hint="First Name" />
+
     <EditText
         android:id="@+id/editText_lastName"
         android:layout_width="match_parent"
@@ -60,8 +63,8 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
-        android:hint="Last Name"
-        android:background="@color/formfield"/>
+        android:background="@color/formField"
+        android:hint="Last Name" />
 
     <EditText
         android:id="@+id/editText_password"
@@ -70,42 +73,41 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
+        android:background="@color/formField"
         android:hint="@string/prompt_password"
-        android:inputType="textPassword"
-        android:background="@color/formfield"/>
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/Button_register"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="60dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="20dp"
-        android:background="@color/colorSubmit"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="30dp"
+        android:background="@color/colorButton1"
         android:onClick="RegisterClick"
         android:text="Register"
         android:textStyle="bold" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="registered? Go to login"
-        android:textSize="18sp"
-        android:textAlignment="center"
         android:layout_marginTop="10dp"
-        android:textColor="@color/colorAccent"/>
+        android:text="Already registered? Go to Login"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/Button_login"
         android:layout_width="240dp"
         android:layout_height="40dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="80dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
-        android:background="@color/colorRegister"
+        android:background="@color/colorButton2"
         android:onClick="LoginClick"
         android:text="LOGIN"
         android:textStyle="bold" />
-
 
 
 </LinearLayout>
