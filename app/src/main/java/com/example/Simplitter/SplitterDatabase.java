@@ -1,5 +1,6 @@
 package com.example.Simplitter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
 
@@ -12,9 +13,11 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import com.example.Simplitter.Dao.ActivityDao;
 import com.example.Simplitter.Dao.DetailExpensesDao;
 import com.example.Simplitter.Dao.UserDao;
+import com.example.Simplitter.Model.DetailExpenses;
+import com.example.Simplitter.Model.ExpensesActivity;
 import com.example.Simplitter.Model.User;
 
-@Database(entities = {User.class},version=3,exportSchema = false)
+@Database(entities = {User.class, ExpensesActivity.class, DetailExpenses.class},version=3,exportSchema = false)
 public abstract class SplitterDatabase extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract ActivityDao activityDao();
