@@ -2,14 +2,18 @@ package com.example.Simplitter.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.Simplitter.R;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
     //  welcome message and user name
     TextView tvWelcome;
+    Button btnCreateExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +21,18 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         tvWelcome = findViewById(R.id.textView_welcome); // Hey ~ display username textview
+
+        btnCreateExpense = findViewById(R.id.button_createExpense);
+        btnCreateExpense.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int userId = 1;
+
+                Intent createExpIntent = new Intent(getApplicationContext(), CreateExpenseActivity.class);
+                createExpIntent.putExtra("userId", userId); //change the userId to database fetched userId
+                startActivity(createExpIntent);
+            }
+        });
     }
 
     // click btn for create Expense page
