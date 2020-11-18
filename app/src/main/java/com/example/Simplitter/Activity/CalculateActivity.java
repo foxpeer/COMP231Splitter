@@ -21,11 +21,24 @@ public class CalculateActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calculate);
+
+
     }
+
+    public static double round(double value, int scale) {
+        return Math.round(value * Math.pow(10, scale)) / Math.pow(10, scale);
+    }
+
 
     // Calculate
     public void CalculateClick(View view) {
-        //Calculator function - will done by Yoonseop
+        TextView totalAmount = (TextView) findViewById(R.id.textView_totalAmount);
+        EditText editTextAmount = (EditText) findViewById(R.id.editText_amount);
+        EditText editTextHowMany = (EditText) findViewById(R.id.editText_howMany);
+        Double editTextAmountValue = Double.parseDouble(editTextAmount.getText().toString());
+        Double editTextHowManyValue =  Double.parseDouble(editTextHowMany.getText().toString());
+        Double result = round(editTextAmountValue / editTextHowManyValue ,2);
+        totalAmount.setText("$" + result.toString());
     }
 
     // Go to Main
