@@ -2,6 +2,7 @@ package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="tb_expenseActivity")
@@ -64,7 +65,14 @@ public class ExpensesActivity {
         this.result=result;
     }
 
-    public ExpensesActivity(double totalAmount, String activityName, int numberOfContributors) {
+    public ExpensesActivity( String activityName, int numberOfContributors) {
+        this.activityName=activityName;
+        this.numberOfContributors=numberOfContributors;
+    }
+
+    @Ignore
+    public ExpensesActivity(int userID,double totalAmount, String activityName, int numberOfContributors) {
+        this.userID=userID;
         this.totalAmount=totalAmount;
         this.activityName=activityName;
         this.numberOfContributors=numberOfContributors;
