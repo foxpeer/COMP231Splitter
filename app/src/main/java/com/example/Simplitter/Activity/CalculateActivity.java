@@ -43,7 +43,7 @@ public class CalculateActivity extends AppCompatActivity {
 
     // Go to Main
     public void MainClick(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
     }
 }

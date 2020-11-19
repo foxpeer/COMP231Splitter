@@ -64,8 +64,7 @@ public class ExpensesActivity {
         this.result=result;
     }
 
-    public ExpensesActivity(int userID,double totalAmount, String activityName, int numberOfContributors) {
-        this.userID=userID;
+    public ExpensesActivity(double totalAmount, String activityName, int numberOfContributors) {
         this.totalAmount=totalAmount;
         this.activityName=activityName;
         this.numberOfContributors=numberOfContributors;
