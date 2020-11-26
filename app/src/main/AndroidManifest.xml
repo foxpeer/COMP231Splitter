@@ -14,23 +14,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Activity.CalculateActivity">
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
+
         <meta-data
             android:name="com.google.android.wearable.standalone"
             android:value="true" />
 
-        <activity android:name=".Activity.CalculateActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".Activity.PaymentOptionsActivity"/>
         <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RegisterActivity" />
         <activity android:name=".Activity.ExpensesDetailActivity"/>
         <activity android:name=".Activity.CreateDetailExpenseActivity"/>
         <activity android:name=".Activity.UpdateDetailExpensesActivity"/>
         <activity android:name=".Activity.UpdateUserActivity"/>
-        <activity android:name=".Activity.PaymentOptionActivity"/>
         <activity android:name=".Activity.NonRegisterCreateActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEND"/>
@@ -41,9 +43,11 @@
 
         <activity android:name=".Activity.CreateExpenseActivity" >
             <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="message/rfc822"/>
+                <action android:name="android.intent.action.SEND" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:mimeType="message/rfc822" />
             </intent-filter>
         </activity>
         <activity android:name=".Activity.HomeActivity" />

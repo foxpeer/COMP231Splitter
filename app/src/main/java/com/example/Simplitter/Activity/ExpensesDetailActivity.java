@@ -149,7 +149,7 @@ public class ExpensesDetailActivity extends AppCompatActivity {
         payNow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent =new Intent(getApplicationContext(),PaymentOptionActivity.class);
+                Intent intent =new Intent(getApplicationContext(),PaymentOptionsActivity.class);
                 startActivity(intent);
             }
         });
