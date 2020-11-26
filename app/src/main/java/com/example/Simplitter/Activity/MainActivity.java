@@ -16,8 +16,8 @@ import com.example.Simplitter.R;
 public class MainActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
-    private SharedPreferences userPref;
-    public SharedPreferences.Editor editor;
+//    private SharedPreferences userPref;
+//    public SharedPreferences.Editor editor;
     EditText etEmail;
     EditText etPassword;
     TextView validation;
@@ -35,12 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void LoginClick(View view) {
         validation.setText("");
-        //for quick test only
-       String email = etEmail.getText().toString();
-        Toast.makeText(getApplicationContext(), "Welcome back " +email, Toast.LENGTH_SHORT).show();
-        Log.d("Login Check", "MainActivity::LoginClick: Welcome back ");
-
-/*
        try {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
@@ -48,21 +42,11 @@ public class MainActivity extends AppCompatActivity {
                 optionalN.ifPresent(user -> {
                     if (user.getPassword().equals(password)) {
                         validation.setText("Welcome " + user.getFirstname() + " " + user.getLastname());
-                        userPref = getSharedPreferences("user", MODE_PRIVATE);
-                        editor = userPref.edit();
-                        editor.putString("email", user.getEmail());
-                        editor.putString("firstName", user.getFirstname());
-                        editor.putString("lastName", user.getLastname());
-                        editor.commit();
+                        Intent intent = new Intent(this, HomeActivity.class);
+                        intent.putExtra("userID",user.getUserID());
+                        startActivity(intent);
+                        LoginStatus.IsLogin=true;
                         Toast.makeText(getApplicationContext(), "Welcome back "+ email +"!", Toast.LENGTH_SHORT).show();
-                        Log.d("Login Check", "MainActivity::LoginClick: Welcome back "+ email +"! ");
-
-                   *//* add in the future for new activity added
-                        Intent intent = new Intent(this, NavActivity.class);
-                        intent.putExtra("nurseId", nurseId);
-                        intent.putExtra("firstName", n.getFirstname());
-                        intent.putExtra("lastName", n.getLastname());
-                        startActivity(intent);*//*
 
                     } else {
                         validation.setText("Failed to verify your credential, please try again");
@@ -71,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
             });
         } catch (Exception ex) {
             validation.setText("Failed to verify your credential, please try again");
-        }*/
+        }
 
     }
 

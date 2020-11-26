@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_marginTop="10dp"
     android:orientation="vertical"
-    tools:context=".Activity.RegisterActivity">
+    tools:context=".Activity.UpdateUserActivity">
 
 
     <ImageView
@@ -20,23 +20,13 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
-        android:text="Register as a new user"
+        android:text="Update user information"
         android:textAlignment="center"
         android:textSize="32dp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_userId"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_id"
-        android:background= "@color/formField"/>
-
-    <EditText
-        android:id="@+id/editText_email"
+        android:id="@+id/editText_updateEmail"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
@@ -46,7 +36,7 @@
         android:hint="@string/prompt_email" />
 
     <EditText
-        android:id="@+id/editText_firstName"
+        android:id="@+id/editText_updateFirstName"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
@@ -56,7 +46,7 @@
         android:hint="First Name" />
 
     <EditText
-        android:id="@+id/editText_lastName"
+        android:id="@+id/editText_updateLastName"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
@@ -66,35 +56,25 @@
         android:hint="Last Name" />
 
     <EditText
-        android:id="@+id/editText_password"
+        android:id="@+id/editText_updatePassword"
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="24dp"
         android:background="@color/formField"
-        android:hint="@string/prompt_password"
+        android:hint="New password"
         android:inputType="textPassword" />
 
     <Button
-        android:id="@+id/Button_register"
+        android:id="@+id/Button_updateUser"
         android:layout_width="240dp"
         android:layout_height="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginTop="30dp"
         android:background="@color/colorButton1"
-        android:onClick="RegisterClick"
-        android:text="Register"
+        android:text="Update"
         android:textStyle="bold" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="Already registered? Go to Login"
-        android:textAlignment="center"
-        android:textColor="@color/colorAccent"
-        android:textSize="18sp" />
 
     <Button
         android:id="@+id/Button_cancelUpdate"
@@ -104,8 +84,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:background="@color/colorButton2"
-        android:onClick="LoginClick"
-        android:text="LOGIN"
+        android:text="Cancel"
         android:textStyle="bold" />
 
 

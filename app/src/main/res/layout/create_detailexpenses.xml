@@ -3,41 +3,39 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
+    android:id="@+id/container1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activity.CreateExpenseActivity">
-
-
+    tools:context=".Activity.CreateDetailExpenseActivity">
     <TextView
         android:id="@+id/textView_title"
         android:layout_width="match_parent"
         android:layout_height="42dp"
+        android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        android:text="Create Expense Activity"
+        android:text="Create Expenses"
         android:textAlignment="center"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-
     <TextView
-        android:id="@+id/textView"
-        android:layout_width="322dp"
+        android:id="@+id/textView_expensename2"
+        android:layout_width="match_parent"
         android:layout_height="42dp"
         android:layout_marginStart="40dp"
-        android:text="Activity ID"
+        android:text="Expenses ID"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_activityID"
-        android:layout_width="316dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="40dp"
-        android:ems="10"/>
+        android:id="@+id/editTextTextExpensesID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <TextView
         android:id="@+id/textView_expensename"
@@ -50,12 +48,12 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_non_expensename"
-        android:layout_width="316dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="40dp"
+        android:id="@+id/editTextExpensesName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="@string/prompt_activities" />
+        android:inputType="textPersonName"
+        android:text="" />
 
     <TextView
         android:id="@+id/textView_howmany"
@@ -63,39 +61,19 @@
         android:layout_height="42dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="25dp"
-        android:text="How many?"
+        android:text="Amount"
         android:textColor="@color/cardview_dark_background"
         android:textSize="24sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/editText_non_howMany2"
-        android:layout_width="316dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="40dp"
-        android:ems="10"
-        android:hint="@string/prompt_number" />
-
 
     <EditText
-        android:id="@+id/editText_non_contributorEmail"
+        android:id="@+id/editTextExpenseAmount"
         android:layout_width="match_parent"
-        android:layout_height="98dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Contributor Email"
         android:inputType="textPersonName"
-        android:textSize="24sp" />
-
-    <Button
-        android:id="@+id/button_non_sendNotification"
-        android:layout_width="317dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="20dp"
-        android:background="@color/colorButton3"
-        android:text="Send Notification"
-        android:textSize="24dp"
-        android:textStyle="bold" />
+        android:text="" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -127,6 +105,5 @@
             android:textStyle="bold" />
 
     </LinearLayout>
-
 
 </LinearLayout>

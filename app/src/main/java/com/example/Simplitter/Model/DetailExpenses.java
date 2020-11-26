@@ -2,12 +2,13 @@ package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="tb_detailExpenses")
 public class DetailExpenses {
 
-    @PrimaryKey(autoGenerate = true)
+    @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "detailExpenses_id")
     private int detailExpensesID;
 
@@ -38,9 +39,12 @@ public class DetailExpenses {
 
 
 
-    public DetailExpenses(int activityID, String detailExpensesName, double detailExpensesAmount) {
+    public DetailExpenses(int activityID, int detailExpensesID,String detailExpensesName, double detailExpensesAmount) {
         this.activityID=activityID;
+        this.detailExpensesID=detailExpensesID;
         this.detailExpensesName=detailExpensesName;
         this.detailExpensesAmount=detailExpensesAmount;
     }
+
+
 }

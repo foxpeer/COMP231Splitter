@@ -63,16 +63,9 @@ class User {
         this.password = password;
     }
 
-    /*//constructor1
-    public User(int userID, String email, String firstname, String lastname, String password) {
-        this.userID = userID;
-        this.email = email;
-        this.firstname = firstname;
-        this.lastname = lastname;
-        this.password = password;
-    }*/
-    //constructor2
-    public User(String email, String firstname, String lastname, String password) {
+
+    public User(int userID,String email, String firstname, String lastname, String password) {
+        this.userID=userID;
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;

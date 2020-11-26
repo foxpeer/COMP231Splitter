@@ -1,154 +1,123 @@
 package com.example.Simplitter.Activity;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.ItemTouchHelper;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.Simplitter.ActivityViewModel;
+import com.example.Simplitter.Adapters.ActivityAdapter;
+import com.example.Simplitter.Model.ExpensesActivity;
 import com.example.Simplitter.R;
+import com.google.gson.Gson;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
+import java.util.Optional;
 
 public class HomeActivity extends AppCompatActivity {
 
+
     //  welcome message and user name
-    TextView tvWelcome;
     Button btnCreateExpense;
     ImageView imageViewUser;
-
+    ActivityViewModel activityViewModel;
+    ExpensesActivity expensesActivity;
+    int userId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Intent intent=getIntent();
+        if(intent.hasExtra("userID")){
+            userId=intent.getIntExtra("userID",0);
+        }
 
-        tvWelcome = findViewById(R.id.textView_welcome); // Hey ~ display username textview
         imageViewUser=findViewById(R.id.userIcon);
 
         btnCreateExpense = findViewById(R.id.button_createExpense);
         btnCreateExpense.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int userId = 1;
-
-                Intent createExpIntent = new Intent(getApplicationContext(), CreateExpenseActivity.class);
-                createExpIntent.putExtra("userId", userId); //change the userId to database fetched userId
-                startActivity(createExpIntent);
+                if(LoginStatus.IsLogin){
+                    Intent createExpIntent = new Intent(getApplicationContext(), CreateExpenseActivity.class);
+                    createExpIntent.putExtra("userId", userId); //change the userId to database fetched userId
+                    startActivity(createExpIntent);
+                }
+                else {
+                    Intent intent = new Intent(getApplicationContext(), NonRegisterCreateActivity.class);
+                    startActivity(intent);
+                }
             }
         });
 
         imageViewUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent createExpIntent = new Intent(getApplicationContext(), MainActivity.class);
-
-                startActivity(createExpIntent);
+                if(LoginStatus.IsLogin){
+                    Intent intent=new Intent(getApplicationContext(),UpdateUserActivity.class);
+                    intent.putExtra("userID",userId);
+                    startActivity(intent);
+                }
+                else {
+                    Intent createExpIntent = new Intent(getApplicationContext(), MainActivity.class);
+                    startActivity(createExpIntent);
+                }
             }
         });
-    }
 
-    // click btn for create Expense page
-    public void CreateExClick(View view) {
+        RecyclerView recyclerView=findViewById(R.id.recycler_view);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-    }
+        final ActivityAdapter activityAdapter=new ActivityAdapter(this);
+        recyclerView.setAdapter(activityAdapter);
 
-    // click btn for view payment history page
-    public void ViewPayClick(View view){
-
-    }
-
-
-    // this part for My Activities list view (used recycle viewer)
-    // this is for the example what We should do it and I just added picture instead of
-    // user activities . you should modify under code
-    // related view => activity_home and row_item
-       /* refer video :   https://www.youtube.com/watch?v=Ph3Ek6cLS4M
-
-        //Assign Variable
-        recyclerView = findViewById(R.id.recycler_view);
-
-        //Create interger Array
-        Integer [] activityLogo = {R.drawable.travel,R.drawable.food,R.drawable.home};
-
-        //Create String array
-        String[] activityName = {"Travel","Food","Shared House"};
-
-        //Initialize arraylist
-        mainModels = new ArrayList<>();
-        for(int i =0 ; i < activityLogo.length; i++){
-            MainModel model = new MainModel(activityLogo[i], activityName[i]);
-            mainModels.add(model);
-        }
-        //design horizontal layout
-        LinearLayoutManager layoutManager = new LinearLayoutManager(
-                HomeActivity.this,LinearLayoutManager.HORIZONTAL,false
-        );
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-
-        //initialize mainadpater
-        mainAdapter = new MainAdapter(HomeActivity.this,mainModels);
-        //set mainadapter to recyclerview
-        recyclerView.setAdapter(mainAdapter);
-
-    }
-
-    public class MainModel{
-        Integer activityLogo;
-        String  activityName;
-
-        public MainModel(Integer activityLogo, String activityName) {
-            this.activityLogo = activityLogo;
-            this.activityName = activityName;
-        }
-
-        public Integer getActivityLogo() {
-            return activityLogo;
-        }
-        public String getActivityName(){
-            return activityName;
-        }
-    }
-        public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHoler>{
-            ArrayList<MainModel> mainModels;
-            Context context;
-
-            public  MainAdapter(Context context, ArrayList<MainModel> mainModels){
-                this.context = context;
-                this.mainModels = mainModels;
+        activityViewModel= ViewModelProviders.of(this).get(ActivityViewModel.class);
+        activityViewModel.getActivityByUserID(userId).observe(this, new Observer<List<ExpensesActivity>>() {
+            @Override
+            public void onChanged(List<ExpensesActivity> expensesActivity) {
+                activityAdapter.setExpensesActivities(expensesActivity);
             }
 
-            @NonNull
+        });
+
+        activityAdapter.setOnItemClickListener(new ActivityAdapter.OnItemClickListener() {
             @Override
-            public MainAdapter.ViewHoler onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-                // crate view
-                View view = LayoutInflater.from(parent.getContext())
-                            .inflate(R.layout.row_item,parent,false);
-                return new ViewHoler(view);
+            public void onItemClick(View v, int position) {
+                Intent intent =new Intent(getApplicationContext(), ExpensesDetailActivity.class);
+                intent.putExtra("ActivityID",activityAdapter.getActivityAct(position).getActivityID());
+                intent.putExtra("Activity",new Gson().toJson(activityAdapter.getActivityAct(position)));
+                intent.putExtra("Contributors",activityAdapter.getActivityAct(position).getNumberOfContributors());
+                startActivity(intent);
+            }
+        });
+        //swipe left or right to delete detail expenses
+        new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(0,
+                ItemTouchHelper.LEFT |ItemTouchHelper.RIGHT) {
+            @Override
+            public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+                return false;
             }
 
             @Override
-            public void onBindViewHolder(@NonNull MainAdapter.ViewHoler holder, int position) {
-                //se logo to image view
-                holder.imageView.setImageResource(mainModels.get(position).getActivityLogo());
-                //set name to image view
-                holder.textView.setText(mainModels.get(position).getActivityName());
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder,
+                                 int direction) {
+                activityViewModel.deleteActivity(activityAdapter.getActivityAct(viewHolder.getAdapterPosition()));
+                Toast.makeText(getApplicationContext(), "Activity deleted", Toast.LENGTH_SHORT).show();
             }
+        }).attachToRecyclerView(recyclerView);
+    }
 
-            @Override
-           public int getItemCount(){
-            return mainModels.size();
-           }
 
-            public class ViewHoler extends RecyclerView.ViewHolder{
-                //Initialize variable
-                ImageView imageView;
-                TextView textView;
-
-                public ViewHoler(@NonNull View itemView) {
-                    super(itemView);
-                    imageView = itemView.findViewById(R.id.image_View);
-                    textView = itemView.findViewById(R.id.text_view);
-                }
-            }*/
 }

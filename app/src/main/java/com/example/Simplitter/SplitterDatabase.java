@@ -63,7 +63,7 @@ public abstract class SplitterDatabase extends RoomDatabase {
         }
         @Override
         protected Void doInBackground(Void... voids) {
-            userDAO.insert(new User( "test1@test.com","Abby","Taylor","123456"));
+
 
           return null;
         }

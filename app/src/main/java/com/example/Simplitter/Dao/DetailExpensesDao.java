@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import com.example.Simplitter.Model.DetailExpenses;
 
+import java.util.List;
 import java.util.Optional;
 
 @Dao
@@ -18,7 +19,9 @@ public interface DetailExpensesDao {
     void insertExpenses(DetailExpenses... detailExpenses);
 
     @Query("SELECT * FROM tb_detailExpenses WHERE activityID=:activityID")
-    LiveData<Optional<DetailExpenses>> getAllExpensesByActivityID(int activityID);
+    LiveData<List<DetailExpenses>> getAllExpensesByActivityID(int activityID);
+    @Query("SELECT * FROM tb_detailExpenses WHERE detailExpenses_id=:expenseID")
+    DetailExpenses getAllExpensesByExpenseID(int expenseID);
 
     @Update
     void Update(DetailExpenses... detailExpenses);

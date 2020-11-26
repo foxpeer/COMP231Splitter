@@ -14,7 +14,7 @@ import com.example.Simplitter.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText eTemail, eTfirstName, eTlastName, eTpassword;
+    EditText eTemail, eTfirstName, eTlastName, eTpassword,userID;
     private UserViewModel userViewModel;
 
     @Override
@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
-      //  userID=(EditText)findViewById(R.id.editText_userId);
+        userID=(EditText)findViewById(R.id.editText_userId);
         eTemail=(EditText)findViewById(R.id.editText_email);
         eTfirstName=(EditText)findViewById(R.id.editText_firstName);
         eTlastName=(EditText)findViewById(R.id.editText_lastName);
@@ -30,12 +30,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     public void RegisterClick(View view) {
-       // int id=Integer.parseInt(userID.getText().toString());
+        int id=Integer.parseInt(userID.getText().toString());
         String email= eTemail.getText().toString();
         String firstname=eTfirstName.getText().toString();
         String lastname=eTlastName.getText().toString();
         String passw=eTpassword.getText().toString();
-        User user=new User(email,firstname,lastname,passw);
+        User user=new User(id,email,firstname,lastname,passw);
 
         userViewModel.insert(user);
         Toast.makeText(getApplicationContext(),"Thanks for your registration, you are good to login now", Toast.LENGTH_SHORT).show();
