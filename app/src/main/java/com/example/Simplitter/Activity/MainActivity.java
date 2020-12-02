@@ -16,8 +16,8 @@ import com.example.Simplitter.R;
 public class MainActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
-    private SharedPreferences userPref;
-    public SharedPreferences.Editor editor;
+//    private SharedPreferences userPref;
+//    public SharedPreferences.Editor editor;
     EditText etEmail;
     EditText etPassword;
     EditText validation;
@@ -42,21 +42,17 @@ public class MainActivity extends AppCompatActivity {
                 optionalN.ifPresent(user -> {
                     if (user.getPassword().equals(password)) {
                         validation.setText("Welcome " + user.getFirstname() + " " + user.getLastname());
-                        userPref = getSharedPreferences("user", MODE_PRIVATE);
-                        editor = userPref.edit();
-                        editor.putString("email", user.getEmail());
-                        editor.putString("firstName", user.getFirstname());
-                        editor.putString("lastName", user.getLastname());
-                        editor.commit();
-                        Toast.makeText(getApplicationContext(), "Welcome back "+ email +"!", Toast.LENGTH_SHORT).show();
-                        Log.d("Login Check", "MainActivity::LoginClick: Welcome back "+ email +"! ");
-
-                       // add in the future for new activity added
+                        // add in the future for new activity added
                         Intent intent = new Intent(this, HomeActivity.class);
                         intent.putExtra("email", email);
                         intent.putExtra("firstName", user.getFirstname());
                         intent.putExtra("lastName", user.getLastname());
                         startActivity(intent);
+
+                        LoginStatus.IsLogin=true;
+                        Toast.makeText(getApplicationContext(), "Welcome back "+ email +"!", Toast.LENGTH_SHORT).show();
+
+                        Log.d("Login Check", "MainActivity::LoginClick: Welcome back "+ email +"! ");
 
                     } else {
                         validation.setText("Oops, please try again");

@@ -36,16 +36,6 @@
 
 
     <TextView
-        android:id="@+id/textView_welcome"
-        android:layout_width="322dp"
-        android:layout_height="89dp"
-        android:layout_marginStart="40dp"
-        android:text="Hey"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="50sp"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/textView_myactivities"
         android:layout_width="312dp"
         android:layout_height="wrap_content"
@@ -57,10 +47,11 @@
         android:textStyle="bold" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="10dp"
+        tools:listitem="@layout/activity_cardview"/>
 
     <Button
         android:id="@+id/button_createExpense"
@@ -71,7 +62,6 @@
         android:layout_marginEnd="40dp"
         android:background="@color/colorButton1"
         android:text="CREATE EXPENSE"
-        android:onClick="CreateExClick"
         android:textColor="@color/cardview_light_background"
         android:textStyle="bold" />
 
@@ -85,7 +75,6 @@
         android:background="@color/colorButton2"
         android:textColor="@color/cardview_light_background"
         android:text="VIEW PAYMENT HISTORY"
-        android:onClick="ViewPayClick"
         android:textStyle="bold" />
 
 

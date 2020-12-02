@@ -17,8 +17,8 @@ import com.example.Simplitter.R;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText eTemail, eTfirstName, eTlastName, eTpassword, etValidation;
 
+    EditText eTemail, eTfirstName, eTlastName, eTpassword, etValidation;
     private UserViewModel userViewModel;
 
     @Override
@@ -26,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
+
         eTemail=(EditText)findViewById(R.id.editText_email);
         eTfirstName=(EditText)findViewById(R.id.editText_firstName);
         eTlastName=(EditText)findViewById(R.id.editText_lastName);
@@ -35,10 +36,12 @@ public class RegisterActivity extends AppCompatActivity {
 
     //click Reigister button to Register
     public void RegisterClick(View view) {
+
         String email= eTemail.getText().toString();
         String firstname=eTfirstName.getText().toString();
         String lastname=eTlastName.getText().toString();
         String passw=eTpassword.getText().toString();
+
         //validate email input format is correct
         if(validateEmailInputFormat() == false){
             etValidation.setText("Please check your email input format");
@@ -62,7 +65,6 @@ public class RegisterActivity extends AppCompatActivity {
                 }
             });
         });
-
     }
     // click login button to login
     public void LoginClick(View view) {
