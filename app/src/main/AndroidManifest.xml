@@ -2,10 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.Simplitter">
-
+    <!--
     <uses-permission android:name="android.permission.WAKE_LOCK" />
-
     <uses-feature android:name="android.hardware.type.watch" />
+    -->
 
     <application
         android:allowBackup="true"
@@ -19,21 +19,24 @@
             android:value="true" />
 
         <activity android:name=".Activity.CalculateActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
         <activity android:name=".Activity.MainActivity" />
-        <activity android:name=".Activity.RegisterActivity" />
-        <activity android:name=".Activity.ExpensesDetailActivity"/>
+        <!--
+           <intent-filter>
+               <action android:name="android.intent.action.MAIN" />
+               <category android:name="android.intent.category.LAUNCHER" />
+           </intent-filter>
+        -->
 
-        <activity android:name=".Activity.CreateExpenseActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="message/rfc822"/>
-            </intent-filter>
+        <activity android:name=".Activity.RegisterActivity" />
+        <activity android:name=".Activity.ExpensesDetailActivity" />
+        <activity android:name=".Activity.CreateExpenseActivity">
+        <!--  <intent-filter>
+             <action android:name="android.intent.action.SEND"/>
+             <category android:name="android.intent.category.DEFAULT"/>
+             <data android:mimeType="message/rfc822"/>
+         </intent-filter> -->
         </activity>
         <activity android:name=".Activity.HomeActivity" />
     </application>

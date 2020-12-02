@@ -11,8 +11,10 @@ class User {
     @ColumnInfo(name = "user_id")
     private int userID;
 
+
     @ColumnInfo(name = "email")
     private  String email;
+
 
     @ColumnInfo(name = "firstname")
     private  String firstname;

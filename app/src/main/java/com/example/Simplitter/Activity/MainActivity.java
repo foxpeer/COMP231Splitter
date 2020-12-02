@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     public SharedPreferences.Editor editor;
     EditText etEmail;
     EditText etPassword;
-    TextView validation;
+    EditText validation;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -30,17 +30,11 @@ public class MainActivity extends AppCompatActivity {
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         etEmail = (EditText) findViewById(R.id.editText_email);
         etPassword = (EditText) findViewById(R.id.editText_password);
-        validation = (TextView) findViewById(R.id.textViewValidation);
+        validation = (EditText) findViewById(R.id.textViewValidation);
     }
 
     public void LoginClick(View view) {
         validation.setText("");
-        //for quick test only
-       String email = etEmail.getText().toString();
-        Toast.makeText(getApplicationContext(), "Welcome back " +email, Toast.LENGTH_SHORT).show();
-        Log.d("Login Check", "MainActivity::LoginClick: Welcome back ");
-
-/*
        try {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
@@ -57,21 +51,21 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Welcome back "+ email +"!", Toast.LENGTH_SHORT).show();
                         Log.d("Login Check", "MainActivity::LoginClick: Welcome back "+ email +"! ");
 
-                   *//* add in the future for new activity added
-                        Intent intent = new Intent(this, NavActivity.class);
-                        intent.putExtra("nurseId", nurseId);
-                        intent.putExtra("firstName", n.getFirstname());
-                        intent.putExtra("lastName", n.getLastname());
-                        startActivity(intent);*//*
+                       // add in the future for new activity added
+                        Intent intent = new Intent(this, HomeActivity.class);
+                        intent.putExtra("email", email);
+                        intent.putExtra("firstName", user.getFirstname());
+                        intent.putExtra("lastName", user.getLastname());
+                        startActivity(intent);
 
                     } else {
-                        validation.setText("Failed to verify your credential, please try again");
+                        validation.setText("Oops, please try again");
                     }
                 });
             });
         } catch (Exception ex) {
-            validation.setText("Failed to verify your credential, please try again");
-        }*/
+            validation.setText("Oops, please try again");
+        }
 
     }
 
@@ -81,5 +75,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
         Toast.makeText(getApplicationContext(), "Register as a new user", Toast.LENGTH_SHORT).show();
     }
+
+
 }
 
