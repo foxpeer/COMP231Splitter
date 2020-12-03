@@ -80,7 +80,7 @@
         android:text="REGISTER"
         android:textStyle="bold" />
 
-    <TextView
+    <EditText
         android:id="@+id/textViewValidation"
         android:layout_width="match_parent"
         android:layout_height="51dp"

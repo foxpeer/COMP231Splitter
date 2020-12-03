@@ -15,7 +15,7 @@ import java.util.Optional;
 @Dao
 public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User... nurses);
+    void insert(User... users);
 
     @Update
     void update(User... users);
@@ -25,6 +25,7 @@ public interface UserDao {
 
     @Query("SELECT * FROM tb_user WHERE email=:email")
     LiveData<Optional<User>> getUserbyEmail(String email);
+
 
     @Query("SELECT * FROM tb_user WHERE user_id=:userID")
     User getUserbyUserID(int userID);

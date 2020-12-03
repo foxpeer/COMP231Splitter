@@ -2,17 +2,21 @@ package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
+import androidx.room.Index;
 import  androidx.room.PrimaryKey;
 
-@Entity(tableName="tb_user")
+@Entity(tableName="tb_user", indices = {@Index(value = {"email"},unique = true)})
 public
 class User {
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     private int userID;
 
+    @Unique
     @ColumnInfo(name = "email")
     private  String email;
+
 
     @ColumnInfo(name = "firstname")
     private  String firstname;
@@ -63,9 +67,15 @@ class User {
         this.password = password;
     }
 
-
+    @Ignore
     public User(int userID,String email, String firstname, String lastname, String password) {
         this.userID=userID;
+        this.email = email;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.password = password;
+    }
+    public User( String email, String firstname, String lastname, String password) {
         this.email = email;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -75,8 +85,8 @@ class User {
     @Override
     public String toString() {
         return "User{" +
-                "userID=" + userID +
-                ", email='" + email + '\'' +
+
+                " email='" + email + '\'' +
                 ", firstname='" + firstname + '\'' +
                 ", lastname='" + lastname + '\'' +
                 ", password='" + password + '\'' +

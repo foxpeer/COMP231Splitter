@@ -26,16 +26,6 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editText_userId"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="24dp"
-        android:hint="@string/prompt_id"
-        android:background= "@color/formField"/>
-
-    <EditText
         android:id="@+id/editText_email"
         android:layout_width="match_parent"
         android:layout_height="40dp"
@@ -75,6 +65,13 @@
         android:background="@color/formField"
         android:hint="@string/prompt_password"
         android:inputType="textPassword" />
+    <EditText
+        android:id="@+id/etValidation"
+        android:layout_width="match_parent"
+        android:layout_height="51dp"
+        android:textAlignment="center"
+        android:textColor="#D30A0A"
+        android:textSize="18sp" />
 
     <Button
         android:id="@+id/Button_register"
