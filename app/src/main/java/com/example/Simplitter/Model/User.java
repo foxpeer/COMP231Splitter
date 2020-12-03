@@ -2,6 +2,7 @@ package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.Index;
 import  androidx.room.PrimaryKey;
 
@@ -66,7 +67,7 @@ class User {
         this.password = password;
     }
 
-
+    @Ignore
     public User(int userID,String email, String firstname, String lastname, String password) {
         this.userID=userID;
         this.email = email;

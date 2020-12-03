@@ -16,8 +16,8 @@ import com.example.Simplitter.R;
 public class MainActivity extends AppCompatActivity {
 
     private UserViewModel userViewModel;
-//    private SharedPreferences userPref;
-//    public SharedPreferences.Editor editor;
+    private SharedPreferences userPref;
+    public SharedPreferences.Editor editor;
     EditText etEmail;
     EditText etPassword;
     EditText validation;

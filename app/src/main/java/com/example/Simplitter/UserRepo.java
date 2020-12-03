@@ -24,7 +24,7 @@ public class UserRepo {
         SplitterDatabase db= SplitterDatabase.getDatabase(app);
         this.userDao=db.userDao();
     }
-  //  in case search by userId
+  //  in case search by user_email
     LiveData<Optional<User>>  getUserByEmail(String email){return  userDao.getUserbyEmail(email);}
 
     public void loadUserDetail(int userID, UpdateUserActivity updateUserActivity){
