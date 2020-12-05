@@ -8,8 +8,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 import com.example.Simplitter.Model.User;
 import com.example.Simplitter.UserViewModel;
@@ -18,9 +21,11 @@ import com.example.Simplitter.R;
 public class RegisterActivity extends AppCompatActivity {
 
     //UI control instance
-    EditText eTemail, eTfirstName, eTlastName, eTpassword,userID;
+    EditText eTemail, eTfirstName, eTlastName, eTpassword,userID, etValidation;
     //User view model instance
     private UserViewModel userViewModel;
+
+    boolean isUserExist=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,12 +35,15 @@ public class RegisterActivity extends AppCompatActivity {
         userViewModel= ViewModelProviders.of(this).get(UserViewModel.class);
         //Get UI control from layout
         userID=(EditText)findViewById(R.id.editText_userId);
+
         eTemail=(EditText)findViewById(R.id.editText_email);
         eTfirstName=(EditText)findViewById(R.id.editText_firstName);
         eTlastName=(EditText)findViewById(R.id.editText_lastName);
         eTpassword=(EditText)findViewById(R.id.editText_password);
+        etValidation = (EditText) findViewById(R.id.etValidation);
     }
 
+    //click Reigister button to Register
     public void RegisterClick(View view) {
         //Get user's input
         int id=Integer.parseInt(userID.getText().toString());
@@ -43,19 +51,53 @@ public class RegisterActivity extends AppCompatActivity {
         String firstname=eTfirstName.getText().toString();
         String lastname=eTlastName.getText().toString();
         String passw=eTpassword.getText().toString();
-        User user=new User(id,email,firstname,lastname,passw);
-        //Invoke user view model to insert new user
-        userViewModel.insert(user);
-        Toast.makeText(getApplicationContext(),"Thanks for your registration, you are good to login now", Toast.LENGTH_SHORT).show();
+        //validate email input format is correct
+        if(validateEmailInputFormat() == false){
+            etValidation.setText("Please check your email input format");
+            return;
+        }
 
-        //After register, go to login page directly
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //check whether the user with the input email exist
+        //if the user/ email exists in database, return
+        //else: insert a new user to the database
+        else{
+            userViewModel.getUserByEmail(email).observe(this, optionalN -> {
+                optionalN.ifPresent(user -> {
+                    if (user.getEmail().equals(email)) {
+                        isUserExist=true;
+                        etValidation.setText("The email account is already exist, please go to login directly or creat a new account.");
+                        return;
+                    }
+                });
+                if(!isUserExist){
+                    User user=new User(id,email,firstname,lastname,passw);
+                    userViewModel.insert(user);
+                    Toast.makeText(getApplicationContext(),"Thanks for your registration, you are good to login now", Toast.LENGTH_SHORT).show();
+                    //after register, go to login page directly
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                }
+            });
+        }
+
     }
-
+    // click login button to login
     public void LoginClick(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
         Toast.makeText(getApplicationContext(),"You already have an account, go to Login directly", Toast.LENGTH_SHORT).show();
     }
+
+    //method validate email input format
+    private boolean validateEmailInputFormat (){
+        String regex =  "^[a-zA-Z0-9._-]+@[a-z]+(\\.[a-z]+)+$";
+        String result;
+        String email= eTemail.getText().toString();
+        if(email.equals(null)|| email.equals("") ||email.isEmpty() ||(!email.matches(regex))){
+            result = "Please enter a correct email format ";
+            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+            return false;
+        }
+        return true;
+    }//end of validation
 }

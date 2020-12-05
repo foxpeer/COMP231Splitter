@@ -5,7 +5,7 @@
     <string name="action_calculate">Calculate</string>
     <string name="action_main">Main</string>
     <string name="prompt_id">userId</string>
-    <string name="prompt_email">Email</string>
+    <string name="prompt_email">abc123@example.com</string>
     <string name="prompt_amount">$ 0</string>
     <string name="prompt_number">0</string>
     <string name="prompt_activities">Activities Name</string>

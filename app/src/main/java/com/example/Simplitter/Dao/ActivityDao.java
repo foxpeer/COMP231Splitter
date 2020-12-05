@@ -24,9 +24,6 @@ public interface ActivityDao {
     //Get all expenses activity by activity ID
     @Query("SELECT * FROM tb_expenseActivity WHERE activity_id=:activityID")
     LiveData<List<ExpensesActivity>> getActivityByActivityID(int activityID);
-    //Get all expenses activity
-//    @Query("SELECT * FROM tb_expenseActivity")
-//    LiveData<Optional<ExpensesActivity>> getAllActivity();
 
     //Update expenses activity
     @Update

@@ -17,7 +17,7 @@ import java.util.Optional;
 public interface UserDao {
     //Insert user
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void insert(User... nurses);
+    void insert(User... users);
 
     //Update user
     @Update
