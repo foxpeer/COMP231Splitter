@@ -1,13 +1,16 @@
+/*
+* Author:Xinglong Lu. Last modified 17, Nov, 2020
+* */
 package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="tb_detailExpenses")
 public class DetailExpenses {
 
+    //Columns
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "detailExpenses_id")
     private int detailExpensesID;
@@ -21,24 +24,17 @@ public class DetailExpenses {
     @ColumnInfo(name = "detailExpensesAmount")
     private  double detailExpensesAmount;
 
+    //Getters and setters
     public int getDetailExpensesID() { return detailExpensesID; }
     public void setDetailExpensesID(int detailExpensesID) { this.detailExpensesID = detailExpensesID; }
-
-    public int getActivityID() {
-        return activityID;
-    }
-    public void setActivityID(int activityID) {
-        this.activityID=activityID;
-    }
-
+    public int getActivityID() { return activityID; }
+    public void setActivityID(int activityID) { this.activityID=activityID; }
     public String getDetailExpensesName() { return detailExpensesName; }
     public void setDetailExpensesName(String detailExpensesName) { this.detailExpensesName = detailExpensesName; }
-
     public double getDetailExpensesAmount() { return detailExpensesAmount; }
     public void setDetailExpensesAmount(double detailExpensesAmount) { this.detailExpensesAmount = detailExpensesAmount; }
 
-
-
+    //Constructor
     public DetailExpenses(int activityID, int detailExpensesID,String detailExpensesName, double detailExpensesAmount) {
         this.activityID=activityID;
         this.detailExpensesID=detailExpensesID;

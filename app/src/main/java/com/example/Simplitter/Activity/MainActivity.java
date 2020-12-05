@@ -1,11 +1,13 @@
+/*
+ * Author: Liping Wu. Last modified 20,Nov,2020. This class is for store user login to app.
+ * User story: As a register user, I want to login to this app
+ * */
 package com.example.Simplitter.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,9 +17,9 @@ import com.example.Simplitter.R;
 
 public class MainActivity extends AppCompatActivity {
 
+    //User View Model Instance
     private UserViewModel userViewModel;
-//    private SharedPreferences userPref;
-//    public SharedPreferences.Editor editor;
+    //UI control Instance
     EditText etEmail;
     EditText etPassword;
     TextView validation;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        // Get view model and UI control
         userViewModel = ViewModelProviders.of(this).get(UserViewModel.class);
         etEmail = (EditText) findViewById(R.id.editText_email);
         etPassword = (EditText) findViewById(R.id.editText_password);
@@ -38,8 +40,10 @@ public class MainActivity extends AppCompatActivity {
        try {
             String email = etEmail.getText().toString();
             String password = etPassword.getText().toString();
+            //Get user by user email
             userViewModel.getUserByEmail(email).observe(MainActivity.this, optionalN -> {
                 optionalN.ifPresent(user -> {
+                    //Check if user's password equals to password in database
                     if (user.getPassword().equals(password)) {
                         validation.setText("Welcome " + user.getFirstname() + " " + user.getLastname());
                         Intent intent = new Intent(this, HomeActivity.class);
@@ -47,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         LoginStatus.IsLogin=true;
                         Toast.makeText(getApplicationContext(), "Welcome back "+ email +"!", Toast.LENGTH_SHORT).show();
-
                     } else {
                         validation.setText("Failed to verify your credential, please try again");
                     }
@@ -59,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //Register Click Button Clicked
+    //Register Click Button Clicked, navigate to register page
     public void RegisterClick(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
         startActivity(intent);

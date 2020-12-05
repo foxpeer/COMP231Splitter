@@ -1,12 +1,16 @@
+/*
+ * Author:Xinglong Lu. Last modified 17, Nov, 2020
+ * */
 package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
-import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName="tb_expenseActivity")
 public class ExpensesActivity {
+
+    //Columns
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "activity_id")
     private int activityID;
@@ -26,7 +30,7 @@ public class ExpensesActivity {
     @ColumnInfo(name = "splitResult")
     private double result;
 
-
+    //Getters and setters
     public int getActivityID() {
         return activityID;
     }
@@ -36,7 +40,6 @@ public class ExpensesActivity {
     public int getUserID() {
         return userID;
     }
-
     public void setUserID(int userID) {
         this.userID = userID;
     }
@@ -55,9 +58,7 @@ public class ExpensesActivity {
     public int getNumberOfContributors(){
         return  numberOfContributors;
     }
-    public void setNumberOfContributors(int numberOfContributors){
-        this.numberOfContributors=numberOfContributors;
-    }
+    public void setNumberOfContributors(int numberOfContributors){ this.numberOfContributors=numberOfContributors; }
     public double getResult(){
         return result;
     }
@@ -65,6 +66,7 @@ public class ExpensesActivity {
         this.result=result;
     }
 
+    //Constructor
     public ExpensesActivity(int userID, int activityID,String activityName, int numberOfContributors,
                             double totalAmount, double result) {
         this.userID=userID;

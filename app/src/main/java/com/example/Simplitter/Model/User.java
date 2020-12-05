@@ -1,3 +1,6 @@
+/*
+ * Author:Liping Wu. Last modified 11, Nov, 2020
+ * */
 package com.example.Simplitter.Model;
 
 import androidx.room.ColumnInfo;
@@ -5,8 +8,9 @@ import androidx.room.Entity;
 import  androidx.room.PrimaryKey;
 
 @Entity(tableName="tb_user")
-public
-class User {
+public class User {
+
+    //Columns
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "user_id")
     private int userID;
@@ -23,6 +27,7 @@ class User {
     @ColumnInfo(name = "password")
     private String password;
 
+    //Getters and setters
     public int getUserID() {
         return userID;
     }
@@ -63,7 +68,7 @@ class User {
         this.password = password;
     }
 
-
+    //Constructor
     public User(int userID,String email, String firstname, String lastname, String password) {
         this.userID=userID;
         this.email = email;
@@ -72,6 +77,7 @@ class User {
         this.password = password;
     }
 
+    //To string method
     @Override
     public String toString() {
         return "User{" +

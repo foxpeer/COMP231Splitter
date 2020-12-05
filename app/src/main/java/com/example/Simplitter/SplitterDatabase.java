@@ -1,15 +1,15 @@
+/*
+ * Author:Liping Wu, Xinglong Lu. Last modified 17, Nov, 2020
+ * */
 package com.example.Simplitter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.AsyncTask;
-
 import androidx.annotation.NonNull;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
-
 import com.example.Simplitter.Dao.ActivityDao;
 import com.example.Simplitter.Dao.DetailExpensesDao;
 import com.example.Simplitter.Dao.UserDao;
@@ -17,8 +17,10 @@ import com.example.Simplitter.Model.DetailExpenses;
 import com.example.Simplitter.Model.ExpensesActivity;
 import com.example.Simplitter.Model.User;
 
+//Introduce classes to database
 @Database(entities = {User.class, ExpensesActivity.class, DetailExpenses.class},version=3,exportSchema = false)
 public abstract class SplitterDatabase extends RoomDatabase {
+    //Dao instances
     public abstract UserDao userDao();
     public abstract ActivityDao activityDao();
     public abstract DetailExpensesDao detailExpensesDao();
@@ -38,6 +40,7 @@ public abstract class SplitterDatabase extends RoomDatabase {
         }
         return instance;
     }
+    //Call back method
     private static RoomDatabase.Callback roomCallback = new RoomDatabase.Callback(){
         @Override
         public void onCreate(@NonNull SupportSQLiteDatabase db) {
@@ -50,6 +53,7 @@ public abstract class SplitterDatabase extends RoomDatabase {
             new PopulateTestDbAsyncTask(instance).execute();
         }*/
     };
+    //Populate Database Async Task
     private static class PopulateDbAsyncTask extends AsyncTask<Void, Void, Void> {
         private UserDao userDAO;
         private ActivityDao activityDao;

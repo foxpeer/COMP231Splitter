@@ -1,22 +1,19 @@
+/*
+* Author Yoonseop Lee. Last modified on 13-Nov-2020. This activity implements the calculation function in the start of the app
+* User story: As an app user, I want to use a bill split calculator at the start of the app
+* */
 package com.example.Simplitter.Activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
-import com.example.Simplitter.UserViewModel;
 import com.example.Simplitter.R;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 public class CalculateActivity extends AppCompatActivity {
-
+    //onCreate method
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,13 +21,13 @@ public class CalculateActivity extends AppCompatActivity {
 
 
     }
-
+    //Round method. Round the value if the value is infinite decimal
     public static double round(double value, int scale) {
         return Math.round(value * Math.pow(10, scale)) / Math.pow(10, scale);
     }
 
 
-    // Calculate
+    // Calculate method. Calculate the split result and display it
     public void CalculateClick(View view) {
         TextView totalAmount = (TextView) findViewById(R.id.textView_totalAmount);
         EditText editTextAmount = (EditText) findViewById(R.id.editText_amount);
@@ -41,7 +38,7 @@ public class CalculateActivity extends AppCompatActivity {
         totalAmount.setText("$" + result.toString());
     }
 
-    // Go to Main
+    // Navigate to main page
     public void MainClick(View view) {
         Intent intent = new Intent(this, HomeActivity.class);
         startActivity(intent);
