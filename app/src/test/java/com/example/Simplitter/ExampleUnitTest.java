@@ -2,6 +2,7 @@ package com.example.Simplitter;
 
 import com.example.Simplitter.Activity.CalculateActivity;
 import com.example.Simplitter.Activity.ExpensesDetailActivity;
+import com.example.Simplitter.Activity.RegisterActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -30,5 +31,13 @@ public class ExampleUnitTest {
     public void splitResult(){
         double result= ExpensesDetailActivity.getResult(335.25,3);
         assertThat(result,is(equalTo(112.0)));
+    }
+
+    @Test
+    public void validateEmailInputFormat(){
+        RegisterActivity activity=new RegisterActivity();
+        String email ="test123";
+        boolean result=activity.validateEmailInputFormat(email);
+        assertThat(result,is(equalTo(false)));
     }
 }

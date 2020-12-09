@@ -52,7 +52,7 @@ public class RegisterActivity extends AppCompatActivity {
         String lastname=eTlastName.getText().toString();
         String passw=eTpassword.getText().toString();
         //validate email input format is correct
-        if(validateEmailInputFormat() == false){
+        if(validateEmailInputFormat(email) == false){
             etValidation.setText("Please check your email input format");
             return;
         }
@@ -89,13 +89,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     //method validate email input format
-    private boolean validateEmailInputFormat (){
+    public boolean validateEmailInputFormat (String email){
         String regex =  "^[a-zA-Z0-9._-]+@[a-z]+(\\.[a-z]+)+$";
         String result;
-        String email= eTemail.getText().toString();
         if(email.equals(null)|| email.equals("") ||email.isEmpty() ||(!email.matches(regex))){
             result = "Please enter a correct email format ";
-            Toast.makeText(this, result, Toast.LENGTH_LONG).show();
+            //Toast.makeText(this, result, Toast.LENGTH_LONG).show();
             return false;
         }
         return true;

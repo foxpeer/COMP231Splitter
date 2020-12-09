@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     ImageView imageViewUser;
     ActivityViewModel activityViewModel;
     //Variables
-    int userId;
+    int userId=-1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
