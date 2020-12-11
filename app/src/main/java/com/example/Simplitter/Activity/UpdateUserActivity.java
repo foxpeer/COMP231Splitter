@@ -1,5 +1,5 @@
 /*
-* Author: Xinglong Lu. Last Modified: 30, Nov,2020. This class implements update user information function of app
+* Author: Xinglong Lu. Last Modified: 9, Nov,2020. This class implements update user information function of app
 * User story: As a registered user I want to visit my profit page. As a registered user, I would want to change my email or
 * password, and also be able to logout
 * */

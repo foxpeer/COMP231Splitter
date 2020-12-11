@@ -1,3 +1,6 @@
+/*
+* Author:Xinglong Lu. Last Modify: 28, Nov, 2020
+* */
 package com.example.Simplitter.Activity;
 
 import org.junit.After;
@@ -7,10 +10,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
+import android.app.usage.UsageEvents;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 
+import androidx.lifecycle.Lifecycle;
 import androidx.test.*;
 
 import androidx.test.core.app.ApplicationProvider;
@@ -26,12 +31,8 @@ public class CalculateActivityTest {
 
     @Rule
     public ActivityTestRule<CalculateActivity> mActivityTestRule=new ActivityTestRule<CalculateActivity>(CalculateActivity.class);
-    private Intent mCalculateIntent;
     private CalculateActivity mActivity=null;
 
-    public CalculateActivityTest(){
-
-    }
 
     @Before
     public void setUp() throws Exception {

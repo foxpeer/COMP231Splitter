@@ -1,10 +1,11 @@
+/*
+ * Author:Xinglong Lu. Last Modify: 28, Nov, 2020
+ * */
 package com.example.Simplitter;
 
 import com.example.Simplitter.Activity.CalculateActivity;
 import com.example.Simplitter.Activity.ExpensesDetailActivity;
 import com.example.Simplitter.Activity.RegisterActivity;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
